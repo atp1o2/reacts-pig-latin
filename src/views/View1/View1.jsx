@@ -24,10 +24,15 @@ const ViewStyle = styled.div`
     height: 6rem;
     padding: 1rem;
   }
+  .phrases {
+    border: 1px solid gray;
+    height: 10rem;
+    font-size: 18px;
+    margin-top: 4rem;
+    padding: 2rem;
+    border-radius: 10px;
+  }
 `;
-
-
-// Able to save original and translated phrases to localStorage
 
 export default class View1 extends Component {
   constructor (props) {
@@ -35,8 +40,11 @@ export default class View1 extends Component {
     this.state = {
       english: '',
       pLatin: '',
+      phrases: [],
     }
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.savePhrase = this.savePhrase.bind(this);
+    this.clearForm = this.clearForm.bind(this);
   }
 
   handleInputChange (event) {
@@ -50,13 +58,42 @@ export default class View1 extends Component {
     });
   }
 
+  clearForm (e) {
+    e.preventDefault();
+    this.setState({
+      english: '',
+      pLatin: '',
+    })
+  }
+
+  savePhrase (e) {
+    e.preventDefault();
+    let phrasePair = {
+      "english": this.state.english,
+      "pLatin": this.state.pLatin,
+    }
+
+    this.setState({
+      ...this.state,
+      phrases: this.state.phrases.concat(phrasePair)
+    })
+  }
+
   render () {
+    let phrasesList = this.state.phrases.map((phrase, i) => {
+      return (
+        <Row key={i} className="phrases">
+          <p><span className="h4">English: </span>{phrase.english}</p>
+          <p><span className="h4">PigLatin: </span>{phrase.pLatin}</p>
+        </Row>
+      )
+    })
     return (
       <ViewStyle>
         <hr />
         <h1>English -> <span className="font-green">Pig Latin</span></h1>
 
-        <Form onSubmit={this.handleFormSubmit}>
+        <Form onSubmit={this.savePhrase}>
           <Row>
             <SingleInput
               className="border border-b"
@@ -71,9 +108,13 @@ export default class View1 extends Component {
           </Row>
           <Row>
             <Button className="mt-3" type="submit">Save Phrase</Button>
+            <Button className="mt-3" onClick={this.clearForm}>Clear</Button>
           </Row>
         </Form>
 
+        <Row>
+          {phrasesList}
+        </Row>
 
       </ViewStyle>
     );
