@@ -1,0 +1,37 @@
+@font-face {
+  font-family: Raleway;
+  src: url(./fonts/Raleway/Raleway-Regular.ttf);
+}
+
+@font-face {
+  font-family: RalewayBold;
+  src: url(./fonts/Raleway/Raleway-Bold.ttf);
+}
+
+body {
+  font-family: Raleway, 'Helvetica';
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+  min-height: 70vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+* {
+  /*border: 1px solid red;*/
+}
+
+hr {
+  border-top: 1px solid #ececec;
+
+  &.yellow {
+    border-top: 1px solid #F5C600;
+  };
+}
