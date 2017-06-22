@@ -44,8 +44,8 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
-    "dotenv": "^4.0.0",
     "css-loader": "0.26.0",
+    "dotenv": "^4.0.0",
     "jsonfile": "^2.4.0",
     "node-sass": "^4.3.0",
     "normalize.css": "^6.0.0",
@@ -103,7 +103,5 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "vendor": {
-
-  }
+  "vendor": {}
 }
