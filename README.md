@@ -1,7 +1,6 @@
-# Habitual React Seed
-Used to start new React projects.
+# Pig Latin Translator
 
-## Modifications
+## Modifications of Create-react-app
 - Ejected [Create React App](https://github.com/facebookincubator/create-react-app)
 - Webpack configured to load SCSS loaders
 - Packaged with Bootstrap v4
